@@ -1,0 +1,42 @@
+{
+  "name": "cd103",
+  "description": "cd103",
+  "main": "",
+  "license": "MIT",
+  "homepage": "home",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "owl.carousel": "^2.1.5",
+    "jqueryui": "^1.12.1",
+    "font-awesome": "fontawesome#^4.6.3",
+    "bootstrap-sass": "^3.3.6",
+    "animate-sass": "^0.6.4",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.23"
+  },
+  "devDependencies": {
+    "animate.css": "^3.5.2",
+    "materialize": "^0.98.0",
+    "hover": "^2.1.1",
+    "compass-mixins": "^1.0.2",
+    "jquery.stellar": "^0.6.2",
+    "remodal": "^1.1.1",
+    "daterangepicker": "^1.6.0",
+    "gsap": "^1.18.4",
+    "ScrollMagic": "^2.0.5",
+    "modernizr": "^3.3.1",
+    "parallax": "^2.1.3",
+    "neat": "^2.0.2",
+    "compass-sass-mixins": "*",
+    "flipclock": "FlipClock#^0.7.7",
+    "wow": "^1.1.2"
+  }
+}

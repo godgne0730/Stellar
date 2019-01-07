@@ -1,0 +1,470 @@
+@import "var";
+// RESET COMBINE WITH PERSONAL STYLING SASS SHEET
+// AUTHOR: HUANG MAO JING
+// LAST UPDATE: 1st Nov. 2018
+
+
+
+// ------------- function improvement -------------
+
+
+	// #1. get text-color from map:
+
+	// 		ex: h1{ color: color('purple');}
+	
+	// #2. get background-color from map:
+		
+	// 		ex: div{ background-color: background('purple');}
+
+	// #3. get button-color from map:
+
+	//      ex: button{ background-color: btn('sexy-purple');}
+
+	// #4. call vertical-align()
+
+	// 		ex: @include vertical-align(top);
+
+	// #5. It's no need to delete max-height:1920px manually now
+
+
+
+// -------------Var-------------
+
+// Set tag which you would like to reset
+
+$tags:(html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video);
+
+$block-level:(article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav,section);
+
+// Set each heading text
+//seq:(tag name / font-size / letter spacing / line-height)
+
+$all:(
+    h1 35px 1px 1,
+    h2 24px 1px 1,
+    h3 18px 1px 1,
+    h4 18px 1px 1,
+    h5 18px 1px 1,
+    h6 18px 1px 1,
+    p  16px 1.2px 22px,
+    label 16px 1px 1  
+);
+
+// Color
+
+$text-color:(
+	black: #333,
+	white: #dfdfdf, 
+);
+
+$background-color:(
+	white: #f0f5f5,
+	black: #111111,
+);
+
+$btn-color:(
+	light-red:#fa0006,
+	grape-purple:#5f0050,
+	dark-purple:#2b0035,
+	sexy-purple:#28005f,
+	navy-blue:#000a4a,
+	pure-white:#fff,
+);
+
+// Responsive settings
+
+$breakpoint:(
+	mobile 320px 767px 12 dm none block,
+	medium 768px 1920px 12 dl block none,
+	// desktop 1920px 12 dl
+);
+ 
+// -------------Reset-------------
+
+// Reset the font-face
+
+body{line-height:1;};
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+ol, ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+.clearfix:after{
+    content:'';
+    display:block;
+	width:0;
+	height:0;
+	clear:both;
+}
+
+%reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+
+%display-block{display:block;}
+
+@each $tag in $tags{#{$tag}{@extend %reset;}}
+
+@each $tag in $block-level{#{$tag}{@extend %display-block;}}
+
+
+// ------------- @mixin groups -------------
+
+// Set head (h1~h6) - one for all devices (enabled)
+
+@mixin head-setting(){
+    @each $header,$size,$letter-spacing,$line-height in $all{
+        #{$header}{
+            font-size: $size;
+            letter-spacing: $letter-spacing;
+            line-height: $line-height;
+        }
+    }
+}
+
+// Create grid system
+
+@mixin create-grid-system($col,$device){
+	@for $i from 1 through $col{
+		.#{$device}-#{$i}{
+			width:100% * $i / 12;
+		};
+    }
+    .#{$device}-#{1},.#{$device}-#{2},.#{$device}-#{3},.#{$device}-#{4},.#{$device}-#{5},.#{$device}-#{6},.#{$device}-#{7},.#{$device}-#{8},.#{$device}-#{9},.#{$device}-#{10},.#{$device}-#{11},.#{$device}-#{12}{
+        float:left;
+    }
+}
+
+// Create responsive device setting
+
+@mixin rwd($rwd){
+	@each $viewpoint,$minW,$maxW,$col,$device,$class_web_display,$class_mob_display in $breakpoint{
+		@if ($rwd == 'mobile' and $viewpoint == 'mobile'){
+			@media screen and (min-width:$minW) and (max-width:$maxW){
+				@include create-grid-system($col,$device);
+				@include display_setting($class_web_display,$class_mob_display);
+                // @include head-setting($viewpoint);
+				@content;
+			}
+		}@else if($rwd == 'medium' and $viewpoint == 'medium'){
+			@media screen and (min-width:$minW){
+				@include create-grid-system($col,$device);
+				@include display_setting($class_web_display,$class_mob_display);
+                // @include head-setting($viewpoint);
+				@content;
+			}
+		}
+	}
+}
+
+// Vertical align setting
+
+
+@mixin vertical-align($align-mode: middle){
+    display: inline-block;
+    vertical-align: $align-mode;
+}
+
+// button setting
+
+@mixin btn-set($device:medium){
+    font-size: 16px;
+    border: 1px solid transparent;
+    background: linear-gradient(67deg, #44227A 0%, btn(light-red) 81%); 
+    color: btn(pure-white);
+    box-sizing: border-box;
+    padding: 8px;
+	border-radius: 3px;
+	@if($device == 'medium'){
+		&:hover{
+			border: 1px solid btn(light-red);
+			background: linear-gradient(0deg, transparent 0%,transparent 100%); 
+			color: btn(light-red); 
+		}
+	}
+}
+
+//  define display class setting
+
+@mixin display_setting($class_web_display,$class_mob_display){
+    .web_display{
+        display: $class_web_display;
+    }
+    .mobile_display{
+        display: $class_mob_display;
+    }
+}
+
+// ------------- @function groups -------------
+
+@function color($color-mode){
+	@return map-get($text-color,$color-mode);
+}
+
+@function background($bgc-mode){
+	@return map-get($background-color,$bgc-mode);
+}
+
+@function btn($bgc-mode){
+	@return map-get($btn-color,$bgc-mode);
+}
+
+// ------------ Page styling ------------
+
+// Global setting for all pages
+
+// *{box-sizing: border-box;}
+
+@include head-setting();
+
+body,button {
+    font-family: '微軟正黑體','Noto Sans TC', sans-serif;
+}
+section{
+    width: 100%;
+    padding:50px 0;
+}
+section > div{
+    width:90%;
+    max-width: 1200px;
+    margin:auto;
+}
+button,input[type=text],input[type=file],textarea,select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    border:none;
+    background-color:#fff;
+}
+input[type=text],input[type=file],textarea{
+    border-radius:3px;
+}
+
+label{font-weight: 700;}
+
+textarea{
+	background-color: #d8e2e2;
+	box-shadow: 0px 0px 5px #333 inset;
+	border-radius: 3px;
+}
+input[type=text]{
+	border: 0px transparent;
+    display: inline-block;
+    height: 25px;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.img_d img {width: 100%;}
+
+.box_inner_padding {
+	box-sizing: border-box;
+	padding: 15px;
+}
+.set_w1200px {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+section > div {
+    width: 100%;
+}
+
+* {
+    // outline: 1px solid #f00;
+}
+
+a {
+    color: #fff
+}
+
+@include rwd(mobile){
+
+    //----------header----------
+    // 上方header背景顏色
+    .wrap_header_nav_content {
+        background-color: #ccc;
+    }
+
+    .wrap_main_nav_subnav {
+        width: 90%;
+        font-size: 0;
+        margin: 0 auto;
+
+        .wrap_hbg,
+        .wrap_logo,
+        .wrap_mobile_bell_info {
+            @include vertical-align();
+            width: 33.333333%;
+        }
+    }
+
+
+    .hbg_label {
+        position: relative;
+        display: inline-block;
+
+        .hbg {
+            margin: 5px;
+            border-radius: 1.5px;
+        }
+    
+        .hbg_f,
+        .hbg_s,
+        .hbg_s2 {
+            width: 25px;
+            height: 3px;
+            background-color: #ddd;
+        }
+        
+        .hbg_s2 {
+            position: absolute;
+            top: 8px;
+            left: 0px;
+        }
+        
+        .hbg_t {
+            width: 20px;
+            height: 3px;
+            background-color: #ddd;
+        }
+    }
+
+    
+
+    .wrap_logo {
+        text-align: center;
+        .logo_img {
+            display: inline-block;
+            width: 80px;
+        }   
+    }
+
+    
+    .wrap_mobile_bell_info {
+        text-align: right;
+
+        .web_bell_img {
+            display: inline-block;
+            width: 30px;
+        }
+    }
+
+    //----------nav-----------
+
+    .wrap_nav_subnav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .wrap_member_membercenter {
+        font-size: 0;
+
+        .wrap_member_photo {
+            @include vertical-align();
+            width: 80px;
+
+            img {
+                border:2px solid #fff;
+                border-radius: 50px;
+            }
+        }
+        .wrap_name_membercenter {
+            @include vertical-align();
+            width: calc( 100% - 80px );
+            box-sizing: border-box;
+            padding-left: 30px;
+            
+            p {
+                
+                margin: 10px 0;
+            }
+        }
+    }
+
+    nav {
+        order: 4;
+    }
+
+    .nav_list {
+        
+
+        li {
+            box-sizing: border-box;
+            padding: 15px 0;
+        }
+
+        a {
+            display:inline-block;
+            font-size: 16px;
+        }
+    }
+
+
+
+
+    
+
+
+
+
+
+
+
+
+}
+
+@include rwd(medium){
+
+}
+
+
+
+
+	
+	
+
+
+
+
+
+
+

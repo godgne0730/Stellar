@@ -1,0 +1,586 @@
+//手機版
+@include rwd(mobile) {
+    #stellar_knowledge_content {
+        //第一區塊
+        #stellar_info_sec {
+            padding: 0;
+            #stellar_info_content {
+                width: 100%;
+                max-width: none;
+                height: 100vh;
+                background-color: #000;
+                position: relative;
+                #stellar_canvas {
+                    display: none;
+                }
+                #stellar_canvas_mobile {
+                    width: 100%;
+                    height: auto;
+                    background-color: #000;
+                }
+                #stellar_text_content{
+                    width: 100%;
+                    color: #FFF;
+                    position: absolute;
+                    top: 55%;
+                    h2 {
+                        padding: 15px;
+                    }
+                    h3 {
+                        padding: 30px 0 0 5px;
+                        text-shadow: 0px 0px 15px #FFF;
+                    }
+                    p {
+                        padding: 5px 15px 0 15px;
+                        text-align: justify;
+                    }
+                }
+                #control_text {
+                    display: none;
+                }
+            }
+        }
+        //第二區塊
+        #special_countdown_sec {
+            padding: 0;
+            #special_countdown_content {
+                width: 100%;
+                height: 100vh;
+                max-width: none;
+                background-color: #111;
+                flex-direction: column;
+                #countdown_timer_bar {
+                    width: 100%;
+                    color: #FFF;
+                    text-align: center;
+                    h2 {
+                        text-align: center;
+                        padding: 3% 0;
+                        padding-top: 50px;
+                    }
+                    #all_countdown_content {
+                        width: 100%;
+                        height: auto;
+                        overflow: auto;
+                        .countdown_timer_box {
+                            box-sizing: border-box;
+                            padding: 10px;
+                            display: inline-block;
+                            width: 90%;
+                            margin: 2% 1%;
+                            box-shadow: 0px 0px 10px #FFF;
+                            border-radius: 15px;
+                            h4 {
+                                padding: 2% 0;
+                            }
+                            div {
+                                padding: 3% 0;
+                            }
+                            button {
+                                @include btn-set(mobile);
+                                margin: 3%;
+                            }
+                            #countdown_box0 ,
+                            #countdown_box1 ,
+                            #countdown_box2  {
+                                font-size: 22px;
+                                color: #FFF;
+                                text-shadow: 0px 0px 10px #FFF;
+                                transition: all .5s;
+                            }       
+                        }
+                    }
+                }
+                #meteor_shower_canvas {
+                    display: none;
+                }
+            }
+        }
+        //第三區塊
+        #horoscope_info_sec {
+            padding: 0px;
+            font-size: 0;
+            #horoscope_info_content {
+                width: 100%;
+                max-width: none;
+                font-size: 0;
+                #horoscope_banner {
+                    width: 100%;
+                    height: 100vh;
+                    overflow: hidden;
+                    text-align: center;
+                    position: relative;
+                    #particles-js { 
+                        position: absolute; 
+                        width: 100%; 
+                        height: 100%; 
+                        background-color: #121631;
+                        background-repeat: no-repeat; 
+                        background-size: cover; 
+                        background-position: 50% 50%;
+                    }
+                    #left_block {
+                        display: none;
+                    }
+                    #right_block {
+                        display: none;
+                    }
+                    #horoscope_box_container {
+                        position: relative;
+                        z-index: 0;
+                        text-align: center;
+                        width: 100%;
+                        height: 100vh;
+                        overflow: hidden;
+                        .horoscope_box:first-of-type,
+                        .horoscope_box:last-of-type {
+                            display: none;
+                        }
+                        .horoscope_box {
+                            display: inline-block;
+                            width:60%;
+                            vertical-align: middle;
+                            position: relative;
+                            left: 0;
+                            opacity: 1;
+                            transition: all .5s;
+                            .horoscope_img_box {
+                                width: 80%;
+                                margin: 0 auto;
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                            .horoscope_text_box {
+                                width: 90%;
+                                color: #EEE;
+                                margin: 0 auto;
+                                position:relative;
+                                h4 {
+                                    padding: 30px;
+                                }
+                                .horoscope_date {
+                                    text-align: center;
+                                    padding-bottom: 15px;
+                                }
+                                p {
+                                    text-align: justify;
+                                }
+                                #left_arrow ,
+                                #right_arrow {
+                                width: 80px;
+                                height: 80px;
+                                position: absolute;
+                                top: 50px;
+                                cursor: pointer;
+                                transition: all .5s;
+                                }
+                                #left_arrow {
+                                    left: -80px;
+                                    #left_arrow_top {
+                                        width: 2px;
+                                        height: 30px;
+                                        background-color: #FFF;
+                                        position: absolute;
+                                        top: 25%;
+                                        left: 30%;
+                                        transform: rotate(45deg);
+                                        z-index: -1;
+                                    }
+                                    #left_arrow_bottom {
+                                        width: 2px;
+                                        height: 30px;
+                                        background-color: #FFF;
+                                        position: absolute;
+                                        top: 50%;
+                                        left: 30%;
+                                        transform: rotate(135deg);
+                                        z-index: -1;
+                                    }
+                                }
+                                #left_arrow:hover {
+                                    #left_arrow_top {
+                                        box-shadow: 0px 0px 10px #FFF;
+                                        transition: all .5s;
+                                    }
+                                    #left_arrow_bottom {
+                                        box-shadow: 0px 0px 10px #FFF;
+                                        transition: all .5s;
+                                    }
+                                }
+                                #right_arrow {
+                                    right: -80px;
+                                    #right_arrow_top {
+                                        width: 2px;
+                                        height: 30px;
+                                        background-color: #FFF;
+                                        position: absolute;
+                                        top: 25%;
+                                        right: 30%;
+                                        transform: rotate(135deg);
+                                    }
+                                    #right_arrow_bottom {
+                                        width: 2px;
+                                        height: 30px;
+                                        background-color: #FFF;
+                                        position: absolute;
+                                        top: 50%;
+                                        right: 30%;
+                                        transform: rotate(45deg);
+                                    }
+                                }
+                                #right_arrow:hover {
+                                    #right_arrow_top {
+                                        box-shadow: 0px 0px 10px #FFF;
+                                        transition: all .5s;
+                                    }
+                                    #right_arrow_bottom {
+                                        box-shadow: 0px 0px 10px #FFF;
+                                        transition: all .5s;
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                    #horoscope_box_container:before {
+                        content: '';
+                        display: inline-block;
+                        width: 0;
+                        height: 100%;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}
+//電腦版
+@include rwd(medium) {
+    #stellar_knowledge_content {
+        //第一區塊
+        #stellar_info_sec {
+            padding: 0px;
+            font-size: 0;
+            #stellar_info_content {
+                width: 100%;
+                max-width: none;
+                position: relative;
+                #stellar_canvas {
+                    width: 100%;
+                    background-color: #111;
+                    height: 100vh;
+                }
+                #stellar_canvas_mobile {
+                    display: none;
+                }
+                #stellar_text_content {
+                    width: 35%;
+                    position: absolute;
+                    top: 35%;
+                    right: 5%;
+                    color: #FFF;
+                    cursor: default;
+                    h2 {
+                        margin: 30px 0;
+                    }
+                    #stellar_title {
+                        color: #FFF;
+                        margin: 20px 0 10px -10px;
+                        text-shadow: 0px 0px 5px #FFF;
+                    }
+                    #stellar_introduction  {
+                        color: #FFF;
+                        text-align: justify;
+                        line-height: 1.4em;
+                    }
+                }
+                #control_text {
+                    position: absolute;
+                    color: #FFF;
+                    bottom: 10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    cursor: default;
+                }
+            }
+        }
+        //第二區塊
+        #special_countdown_sec {
+            padding: 0px;
+            font-size: 0;
+            #special_countdown_content {
+                width: 100%;
+                max-width: none;
+                font-size: 0;
+                #countdown_timer_bar {
+                    box-sizing: border-box;
+                    padding-top: 50px;
+                    display: inline-block;
+                    width: 30%;
+                    vertical-align: top;
+                    height: 100vh;
+                    background-color: #000;
+                    position: relative;
+                    overflow: hidden;
+                    h2 {
+                        color: #FFF;
+                        text-align: center;
+                        padding: 30px;
+                        position: relative;
+                        right: calc(-17px);
+                    }
+                    #all_countdown_content {
+                        width: 100%;
+                        height: 75vh;
+                        overflow-y: auto;
+                        position: absolute;
+                        right: calc(-17px);
+                        .countdown_timer_box {
+                            margin: 15px auto;
+                            width: 70%;
+                            box-shadow: 0px 0px 10px #FFF;
+                            text-align: center;
+                            cursor: pointer;
+                            transition: all .5s;
+                            p {
+                                color: #FFF;
+                                padding: 5px;
+                                transition: all .5s;
+                                span {
+                                    padding: 0px 5px;
+                                }
+                            }
+                            h4 {
+                                padding: 10px 0;
+                                font-size: 18px;
+                                color: #FFF;
+                                transition: all .5s;
+                            }
+                            button {
+                                @include btn-set();
+                                margin: 10px 10px;
+                            }
+                            #countdown_box0 ,
+                            #countdown_box1 ,
+                            #countdown_box2  {
+                                font-size: 22px;
+                                color: #FFF;
+                                text-shadow: 0px 0px 10px #FFF;
+                                transition: all .5s;
+                            }
+                        }
+                        .countdown_timer_box:hover {
+                            background-color: rgba(255,255,255,.9);
+                            transition: all .5s;
+                            p {
+                                color: #000;
+                                transition: all .5s;
+                            }
+                            h4 {
+                                color: #000;
+                                transition: all .5s;
+                            }
+                            #countdown_timer_first ,
+                            #countdown_timer_second ,
+                            #countdown_timer_third ,
+                            #countdown_timer_fourth {
+                                color: #000;
+                                transition: all .5s;
+                            }
+                        }
+                        .onclick_bg {
+                            background-color: #003;
+                        }
+                    }
+                }
+                #meteor_shower_background {
+                    display: inline-block;
+                    vertical-align: top;
+                    height: 100vh;
+                    width: 70%;
+                    background-image: url("../img/member_center/album_7.jpg");
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: 50% 50%;
+                    overflow:hidden;
+                    #meteor_shower_canvas {
+                        width: 140%;
+                        height: 35vh;          
+                    }
+                }
+            }
+        }
+
+        //第三區塊
+        #horoscope_info_sec {
+            padding: 0px;
+            font-size: 0;
+            #horoscope_info_content {
+                width: 100%;
+                max-width: none;
+                font-size: 0;
+                #horoscope_banner {
+                    width: 100%;
+                    height: 100vh;
+                    overflow: hidden;
+                    text-align: center;
+                    position: relative;
+                    #particles-js { 
+                        position: absolute; 
+                        width: 100%; 
+                        height: 100%; 
+                        background-color: #121631;
+                        background-repeat: no-repeat; 
+                        background-size: cover; 
+                        background-position: 50% 50%;
+                    }
+                    #left_block {
+                        width: 30%;
+                        height: 100vh;
+                        background:linear-gradient(to right, 
+                        rgba(0, 0, 0, 0.9) 5%, 
+                        rgba(0, 0, 0, 0) 100%, 
+                        rgba(0, 0, 0, 0) 98%);
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        z-index: 2;
+                    }
+                    #right_block {
+                        width: 30%;
+                        height: 100vh;
+                        background: linear-gradient(to left,
+                        rgba(0, 0, 0, 0.9) 5%, 
+                        rgba(0, 0, 0, 0) 100%, 
+                        rgba(0, 0, 0, 0) 98%);
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        z-index: 2;
+                    }
+                    #horoscope_box_container {
+                        position: relative;
+                        z-index: 0;
+                        text-align: center;
+                        width: 100%;
+                        height: 100vh;
+                        .horoscope_box {
+                            display: inline-block;
+                            width: 33%;
+                            vertical-align: middle;
+                            position: relative;
+                            left: 0;
+                            opacity: 1;
+                            transition: all .5s;
+                            .horoscope_img_box {
+                                width: 80%;
+                                margin: 0 auto;
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                            .horoscope_text_box {
+                                width: 80%;
+                                color: #EEE;
+                                margin: 0 auto;
+                                position:relative;
+                                h4 {
+                                    padding: 30px;
+                                }
+                                .horoscope_date {
+                                    text-align: center;
+                                    padding-bottom: 15px;
+                                }
+                                p {
+                                    text-align: justify;
+                                }
+                                #left_arrow ,
+                                #right_arrow {
+                                width: 80px;
+                                height: 80px;
+                                position: absolute;
+                                top: 50px;
+                                cursor: pointer;
+                                transition: all .5s;
+                                }
+                                #left_arrow {
+                                    left: -80px;
+                                    #left_arrow_top {
+                                        width: 2px;
+                                        height: 30px;
+                                        background-color: #FFF;
+                                        position: absolute;
+                                        top: 25%;
+                                        left: 30%;
+                                        transform: rotate(45deg);
+                                        z-index: -1;
+                                    }
+                                    #left_arrow_bottom {
+                                        width: 2px;
+                                        height: 30px;
+                                        background-color: #FFF;
+                                        position: absolute;
+                                        top: 50%;
+                                        left: 30%;
+                                        transform: rotate(135deg);
+                                        z-index: -1;
+                                    }
+                                }
+                                #left_arrow:hover {
+                                    #left_arrow_top {
+                                        box-shadow: 0px 0px 10px #FFF;
+                                        transition: all .5s;
+                                    }
+                                    #left_arrow_bottom {
+                                        box-shadow: 0px 0px 10px #FFF;
+                                        transition: all .5s;
+                                    }
+                                }
+                                #right_arrow {
+                                    right: -80px;
+                                    #right_arrow_top {
+                                        width: 2px;
+                                        height: 30px;
+                                        background-color: #FFF;
+                                        position: absolute;
+                                        top: 25%;
+                                        right: 30%;
+                                        transform: rotate(135deg);
+                                    }
+                                    #right_arrow_bottom {
+                                        width: 2px;
+                                        height: 30px;
+                                        background-color: #FFF;
+                                        position: absolute;
+                                        top: 50%;
+                                        right: 30%;
+                                        transform: rotate(45deg);
+                                    }
+                                }
+                                #right_arrow:hover {
+                                    #right_arrow_top {
+                                        box-shadow: 0px 0px 10px #FFF;
+                                        transition: all .5s;
+                                    }
+                                    #right_arrow_bottom {
+                                        box-shadow: 0px 0px 10px #FFF;
+                                        transition: all .5s;
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                    #horoscope_box_container:before {
+                        content: '';
+                        display: inline-block;
+                        width: 0;
+                        height: 100%;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}

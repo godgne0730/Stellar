@@ -1,0 +1,23 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "first-person-controls": "^1.0.1",
+    "jquery-countdown": "^2.2.0",
+    "three-onevent": "^1.1.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
+  },
+  "name": "gulp",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

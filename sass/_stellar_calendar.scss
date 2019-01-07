@@ -1,0 +1,291 @@
+
+/*---不分尺寸---*/
+
+#wrap_all_calendar {
+	font-size: 0;
+	display: inline-block;
+	
+		> div {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.wrap_filter_event {
+			margin-top: 20px;
+			box-shadow: 1px 1px 10px #555 inset; 
+		}
+
+
+	// ---------- calendar -----------
+	.calendar_block {
+		width: 300px;
+		box-sizing: border-box;
+		padding: 10px;
+		background-image: url(../img/calendarBcg.png);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: 5px;
+	}
+
+
+
+	#calendar_block {
+		width: 100%;
+
+	}
+
+	#showCurrentMonth {
+		font-size: 32px;
+	}
+
+	.calendar_row {
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.calendar_row p {
+		font-size: 14px;
+	}
+
+	#calendar_block .calendar_row:first-child {
+		box-sizing: border-box;
+		margin: 0;
+	}
+
+	#calendar_block .calendar_row:first-child > div {
+		font-size: 14px;
+	}
+
+	#calendar_block .calendar_row + .calendar_row {
+		margin: 10px 0 0 0;
+	}
+
+
+	.calendar_weekday,
+	.calendar_data {
+		text-align: center;
+		color: color(white);
+		/*background-color: #1c204d;*/
+		line-height: 35px;
+		width: 35px;
+		height: 35px;
+		border-radius: 17.5px;	
+		transition: 0.5s;
+	}
+
+	.hover_color {
+		cursor: pointer;
+	}
+
+	.hover_color:hover {
+		background-color: btn(light-red);
+	}
+
+	.show_month_controll {
+		width: 100%;
+		font-size: 0;
+		text-align: center;
+		font-size: 0;
+	}
+
+	.show_month_controll > * {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.pre_next_month_btn {
+		width: 15px;
+		margin: 0 15px;
+	}
+
+	.pre_next_month_btn img {
+		width: 100%;
+	}
+
+	h2 {
+		color: color(white);
+		margin: 10px 0;
+	}
+
+	// 畫面上橫的月份
+
+
+	.month_list {
+		width: 90%;
+		margin: 0 auto;
+		display: flex;
+		margin-bottom: 40px;
+		position: relative;
+
+		&::before {
+			content: '';
+			width: 100%;
+			height: 1px;
+			background-color: color(white);
+			position: absolute;
+			top: 40px;
+			left: 0;
+		}
+
+		.month_num {
+			font-size: 14px;
+			flex:1;
+			display: inline-block;
+			text-align: center;
+			color: color(white);
+			cursor: pointer;
+
+			&:nth-child(11) {
+				flex:1.3;
+			}
+
+			&:last-child {
+				flex:1.3;
+			}
+		}
+	}
+
+	.wrap_month {
+		margin: 10px 0;
+		position: relative;
+
+		.month_dot {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background-color: btn('light-red');
+			background-color: btn('grape-purple');
+			position: absolute;
+			top: 36px;
+			left: 18px;;
+			box-shadow: 1px 1px 2px #111;
+		}
+	}
+
+
+	// ----------wrap filter content---------
+
+
+	.wrap_filter_event {
+		background-image: url(../img/calendarBcg.png);
+		opacity: 0.8;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		width: 300px;
+		box-sizing: border-box;
+		padding: 10px;
+		border-radius: 0 3px 3px 0;
+	}
+
+	.filter_time {
+
+		h2 {
+			margin-top: 0;
+			text-align: center;
+		}
+
+
+		> div {
+			text-align: center;
+			margin: 15px 0;
+
+			label {
+				color: color(white);
+				margin-right: 10px;
+			}
+
+			&:nth-child(2) {
+				margin-top: 10px;
+			}
+
+			&:last-child {
+				margin-bottom: 30px;
+			}
+
+		}
+
+		
+	}
+
+	.filter_area {
+		h2 {
+			text-align: center;
+		}
+
+		.area_select {
+			text-align: center;
+			border-bottom: 1px solid color(white);
+			box-sizing: border-box;
+			padding-bottom: 10px;
+
+			> li {
+			font-size: 16px;
+			margin: 0px 15px 15px 15px;
+			display: inline-block;
+			color: color(white);
+			text-align: center;
+			line-height: 35px;
+			width: 35px;
+			height: 35px;
+			border-radius: 17.5px;	
+			transition: 0.5s;
+			}
+		}
+	}
+
+	.addAreaColor {
+		background-color: btn(#fa0006);
+	}
+
+	.wrap_event {
+		margin-top: 30px;
+	}
+
+	.show_event {
+		font-size: 0;
+		margin: 10px 0 0 0;
+		cursor: pointer;
+
+		> div,
+		> p {
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 10px;
+			color: color(white);
+		}
+
+		p:last-child {
+			overflow : hidden;
+			text-overflow : ellipsis;
+			white-space : nowrap;
+			font-size: 14px;
+		}
+		.event_dot {
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			background-color: color(white);
+			transition: .5s;
+		}
+
+		.event_click_color {
+			background-color: btn(light-red);
+		}
+
+		
+	}
+
+	.show_event:hover > .event_dot {
+		background-color: btn(light-red);
+		transition: 0.5s;
+	}
+
+	h3 {
+		color: color(white);
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+}
